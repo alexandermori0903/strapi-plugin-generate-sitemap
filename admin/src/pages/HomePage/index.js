@@ -14,9 +14,11 @@ import {
   TextInput,
 } from "@strapi/design-system";
 import { Plus, Trash } from "@strapi/icons";
+import GuideImage from "../../assets/images/guide.png";
 
 const HomePage = () => {
   const [contentTypes, setContentTypes] = useState([]);
+  const [showGuide, setShowGuide] = useState(false);
   const [settings, setSettings] = useState([
     {
       contentType: null,
@@ -30,15 +32,19 @@ const HomePage = () => {
   const [isGenerating, setIsGenerating] = useState(false);
   useEffect(() => {
     const fetchContentTypes = async () => {
-      const response = await fetch("/api/content-type-builder/content-types");
-      const data = await response.json();
-      setContentTypes(
-        data.data.filter(
-          (item) =>
-            item.uid.startsWith("api::") &&
-            item.schema.kind === "collectionType"
-        )
-      );
+      try {
+        const response = await fetch("/api/content-type-builder/content-types");
+        const data = await response.json();
+        setContentTypes(
+          data.data.filter(
+            (item) =>
+              item.uid.startsWith("api::") &&
+              item.schema.kind === "collectionType"
+          )
+        );
+      } catch (error) {
+        setShowGuide(true);
+      }
     };
     fetchContentTypes();
   }, []);
@@ -142,7 +148,18 @@ const HomePage = () => {
     setIsGenerating(false);
   };
 
-  return (
+  return showGuide ? (
+    <div style={{ color: "white", padding: "50px" }}>
+      <p style={{ textAlign: "center", fontSize: "30px" }}>
+        Please check getContentTypes option for Public role.
+      </p>
+      <img
+        src={GuideImage}
+        alt="Guide"
+        style={{ width: "50%", margin: "50px auto", display: "block" }}
+      />
+    </div>
+  ) : (
     <div style={{ color: "white", padding: "50px" }}>
       <p style={{ textAlign: "center", fontSize: "30px" }}>
         Please select content types and configure to generate sitemap
