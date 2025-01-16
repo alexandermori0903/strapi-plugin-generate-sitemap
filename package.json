@@ -1,6 +1,6 @@
 {
-  "name": "generate-sitemap",
-  "version": "0.0.0",
+  "name": "@alexandermori0903/generate-sitemap",
+  "version": "1.0.0",
   "description": "This is the plugin for generating sitemap",
   "strapi": {
     "name": "generate-sitemap",
@@ -27,10 +27,7 @@
     "styled-components": "^5.2.1",
     "@strapi/strapi": "^4.25.11"
   },
-  "author": {
-    "name": "Alexander Mori",
-    "email": "alexandermori0903@outlook.com"
-  },
+  "author": "Alexander Mori <alexandermori0903@outlook.com>",
   "maintainers": [
     {
       "name": "Alexander Mori",
@@ -41,5 +38,24 @@
     "node": ">=18.0.0 <=20.x.x",
     "npm": ">=6.0.0"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "main": "strapi-admin.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexandermori0903/strapi-plugin-generate-sitemap.git"
+  },
+  "keywords": [
+    "strapi",
+    "plugin",
+    "generate",
+    "sitemap",
+    "xml"
+  ],
+  "bugs": {
+    "url": "https://github.com/alexandermori0903/strapi-plugin-generate-sitemap/issues"
+  },
+  "homepage": "https://github.com/alexandermori0903/strapi-plugin-generate-sitemap#readme"
 }
